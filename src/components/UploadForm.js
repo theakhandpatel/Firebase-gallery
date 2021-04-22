@@ -6,8 +6,8 @@ import { Ring } from "react-css-spinners"
 function UploadForm() {
   const [file, setFile] = useState(null)
   const [error, setError] = useState(null)
-  const [optimizing, setOptimizing] = useState(false)
   const types = ["image/jpeg", "image/png"]
+  let optimizing = false
 
   const changeHandler = async (e) => {
     let selected = e.target.files[0]
@@ -18,10 +18,10 @@ function UploadForm() {
         useWebWorker: true,
       }
       try {
-        setOptimizing(true)
+        optimizing = true
         const compressedFile = await imageCompression(selected, options)
         setFile(compressedFile)
-        setOptimizing(false)
+        optimizing = false
         e.target.value = null
         // write your own logic
       } catch (error) {
