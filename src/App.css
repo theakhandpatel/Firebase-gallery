@@ -1,13 +1,22 @@
 .App {
-  text-align: center;;
-  margin:20px auto;
+  text-align: center;
+  margin: 20px auto;
+  color: var(--primary);
 }
 
-header{
+header {
   color: var(--primary);
   display: flex;
   justify-content: space-around;
-  align-items:center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+header h1 {
+  flex-basis: auto;
+}
+
+#file-input {
+  margin-bottom: 3rem;
 }
 
 .progress-bar {
@@ -17,11 +26,18 @@ header{
 }
 
 .img-grid {
-  width: 50%;
+  max-width: 960px;
   margin: 20px auto;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 40px;
+}
+
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  .img-grid {
+    width: 90%;
+  }
 }
 
 .img-wrap {
@@ -39,4 +55,44 @@ header{
   position: absolute;
   top: 0;
   left: 0;
-} 
+}
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.backdrop img {
+  display: block;
+  max-width: 60%;
+  max-height: 80%;
+  margin: 60px auto;
+  box-shadow: 3px 5px 7px rgba(0, 0, 0, 0.5);
+  border: 3px solid white;
+}
+
+.backdrop span {
+  background-color: #465775;
+  padding: 10px 20px;
+  border-radius: 20px;
+  color: #fff;
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+}
+.backdrop span:hover {
+  cursor: pointer;
+  -webkit-transform: scale(0.9);
+  transform: scale(0.9);
+}
