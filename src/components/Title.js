@@ -2,7 +2,7 @@ import { useState } from "react"
 import { MdBrightness6 } from "react-icons/md"
 
 function Title() {
-  const [darkMode, setDarkMode] = useState(false)
+  let darkMode = false
   const darkModeToggler = () => {
     if (!darkMode) {
       document.body.classList.add("dark-theme")
@@ -11,7 +11,7 @@ function Title() {
       document.body.classList.add("light-theme")
       document.body.classList.remove("dark-theme")
     }
-    setDarkMode(!darkMode)
+    darkMode = !darkMode
   }
 
   return (
