@@ -12,7 +12,7 @@ const useStorage = (file) => {
     const storageRef = projectStorage.ref(
       file.name + "-" + firebase.firestore.Timestamp.now()
     )
-    console.log(projectFirestore)
+
     const collectionRef = projectFirestore.collection("images")
 
     storageRef.put(file).on(

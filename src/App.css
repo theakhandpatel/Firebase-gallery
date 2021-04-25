@@ -4,6 +4,14 @@
   color: var(--primary);
 }
 
+.content {
+  min-height: calc(100vh - 3.5rem);
+}
+
+footer {
+  height: 2rem;
+}
+
 header {
   color: var(--primary);
   display: flex;

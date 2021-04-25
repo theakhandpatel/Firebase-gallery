@@ -1,5 +1,6 @@
 import { useState } from "react"
 import "./App.css"
+import Footer from "./components/Footer"
 import ImageGrid from "./components/ImageGrid"
 import Modal from "./components/Modal"
 import Title from "./components/Title"
@@ -10,12 +11,15 @@ function App() {
 
   return (
     <div className="App">
-      <Title />
-      <UploadForm />
-      <ImageGrid setSelectedImg={setSelectedImg} />
-      {selectedImg && (
-        <Modal selectedImg={selectedImg} setSelectedImg={setSelectedImg} />
-      )}
+      <div className="content">
+        <Title />
+        <UploadForm />
+        <ImageGrid setSelectedImg={setSelectedImg} />
+        {selectedImg && (
+          <Modal selectedImg={selectedImg} setSelectedImg={setSelectedImg} />
+        )}
+      </div>
+      <Footer />
     </div>
   )
 }
