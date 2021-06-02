@@ -1,9 +1,12 @@
 import { motion } from "framer-motion"
 import { useEffect } from "react"
 import useStorage from "../hooks/useStorage"
+import { useParams } from "react-router-dom"
 
-const ProgressBar = ({ file, setFile }) => {
-  const { url, progress } = useStorage(file)
+const ProgressBar = ({ file, setFile, thumbnail }) => {
+  const { albumId } = useParams()
+  console.log(albumId)
+  const { url, progress } = useStorage(file, thumbnail, albumId)
   useEffect(() => {
     if (url) {
       setFile(null)

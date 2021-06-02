@@ -1,25 +1,20 @@
-import { useState } from "react"
 import "./App.css"
-import Footer from "./components/Footer"
-import ImageGrid from "./components/ImageGrid"
-import Modal from "./components/Modal"
+import AlbumView from "./components/AlbumView"
+import ImageHome from "./components/ImageHome"
 import Title from "./components/Title"
-import UploadForm from "./components/UploadForm"
+import { Route, Switch } from "react-router-dom"
+
+import { projectFirestore } from "./firebase/config"
+import firebase from "firebase"
 
 function App() {
-  const [selectedImg, setSelectedImg] = useState(null)
-
   return (
     <div className="App">
-      <div className="content">
-        <Title />
-        <UploadForm />
-        <ImageGrid setSelectedImg={setSelectedImg} />
-        {selectedImg && (
-          <Modal selectedImg={selectedImg} setSelectedImg={setSelectedImg} />
-        )}
-      </div>
-      <Footer />
+      <Title />
+      <Switch>
+        <Route exact path="/" component={AlbumView} />
+        <Route path="/:albumId" component={ImageHome} />
+      </Switch>
     </div>
   )
 }

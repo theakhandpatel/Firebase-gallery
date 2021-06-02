@@ -1,20 +1,28 @@
 import { useEffect, useState } from "react"
-import { projectFirestore, projectStorage, timeStamp } from "../firebase/config"
+import { projectFirestore, projectStorage } from "../firebase/config"
 import firebase from "firebase"
 
-const useStorage = (file) => {
+const useStorage = (file, thumbnail, albumId) => {
   const [progress, setProgress] = useState(0)
   const [error, setError] = useState(null)
   const [url, setUrl] = useState(null)
 
   useEffect(() => {
+    let localThumbUrl = null
+    const timeStamp = firebase.firestore.Timestamp.now()
     // A storage reference to bucket
-    const storageRef = projectStorage.ref(
-      file.name + "-" + firebase.firestore.Timestamp.now()
+    const storageRef = projectStorage.ref(timeStamp + "-" + file.name)
+
+    const thumbStorageRef = projectStorage.ref("thumbnail" + timeStamp)
+
+    thumbStorageRef.put(thumbnail).on(
+      "state-changed",
+      () => {},
+      () => {},
+      async () => {
+        localThumbUrl = await thumbStorageRef.getDownloadURL()
+      }
     )
-
-    const collectionRef = projectFirestore.collection("images")
-
     storageRef.put(file).on(
       "state-changed",
       (snapshot) => {
@@ -26,12 +34,22 @@ const useStorage = (file) => {
       },
       async () => {
         const url = await storageRef.getDownloadURL()
-        const createdAt = timeStamp()
-        collectionRef.add({ url, createdAt })
+
+        projectFirestore
+          .collection("albums")
+          .doc(albumId)
+          .update({
+            images: firebase.firestore.FieldValue.arrayUnion({
+              name: file.name,
+              url,
+              thumbUrl: localThumbUrl || url,
+            }),
+          })
+          .then(console.log("done"))
         setUrl(url)
       }
     )
-  }, [file])
+  }, [file, albumId, thumbnail])
 
   return { progress, url, error }
 }
