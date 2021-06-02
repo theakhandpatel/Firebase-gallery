@@ -15,7 +15,7 @@ const ImageGrid = ({ setSelectedImg, images }) => {
             <motion.img
               amimate={{ opacity: 1 }}
               transition={{ delay: 1 }}
-              src={doc.url}
+              src={doc.thumbUrl}
               alt="uploaded pic"
             />
           </motion.div>

@@ -5,7 +5,8 @@ import { useParams } from "react-router-dom"
 
 const ProgressBar = ({ file, setFile, thumbnail }) => {
   const { albumId } = useParams()
-  const { url, progress } = useStorage(file, albumId, thumbnail)
+  console.log(albumId)
+  const { url, progress } = useStorage(file, thumbnail, albumId)
   useEffect(() => {
     if (url) {
       setFile(null)

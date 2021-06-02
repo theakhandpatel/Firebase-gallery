@@ -10,7 +10,6 @@ import firebase from "firebase"
 function App() {
   return (
     <div className="App">
-      Hey
       <Title />
       <Switch>
         <Route exact path="/" component={AlbumView} />
