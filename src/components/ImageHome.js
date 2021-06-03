@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react"
 import ImageGrid from "./ImageGrid"
 import Modal from "./Modal"
-import UploadForm from "./UploadForm"
 import { useParams } from "react-router-dom"
 import { projectFirestore } from "../firebase/config"
+import AddFileButton from "./AddFileButton"
 
 function ImageHome() {
   const [selectedImg, setSelectedImg] = useState(null)
@@ -20,9 +20,10 @@ function ImageHome() {
   }, [albumId])
   return (
     <div className="album-view">
-      <h2>{album?.name}</h2>
+      <h2 class="display-2 text-center text-danger">{album?.name}</h2>
+      <AddFileButton albumId={albumId} />
+      <hr class="divider"></hr>
       <div className="content">
-        <UploadForm />
         {album && (
           <ImageGrid images={album.images} setSelectedImg={setSelectedImg} />
         )}

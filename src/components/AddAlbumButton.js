@@ -29,9 +29,14 @@ export default function AddFolderButton() {
 
   return (
     <>
-      <Button onClick={openModal} variant="outline-success" size="sm">
-        <FaFolderPlus />
-      </Button>
+      <div className=" d-flex  ">
+        <div className="flex-grow-1"></div>
+        <div className="pr-4">
+          <Button onClick={openModal} variant="light" size="lg">
+            <FaFolderPlus color="#372772" size={30} />
+          </Button>
+        </div>
+      </div>
       <Modal show={open} onHide={closeModal}>
         <Form onSubmit={handleSubmit}>
           <Modal.Body>
