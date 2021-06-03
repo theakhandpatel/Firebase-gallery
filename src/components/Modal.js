@@ -1,7 +1,8 @@
 import { motion } from "framer-motion"
 import { projectStorage, projectFirestore } from "../firebase/config"
+import firebase from "firebase"
 
-const Modal = ({ selectedImg, setSelectedImg }) => {
+const Modal = ({ selectedImg, setSelectedImg, albumId }) => {
   const handleModalClick = (e) => {
     if (e.target.classList.contains("backdrop")) {
       setSelectedImg(null)
@@ -9,18 +10,20 @@ const Modal = ({ selectedImg, setSelectedImg }) => {
   }
   const deleteImage = (e) => {
     const fileStorageRef = projectStorage.refFromURL(selectedImg.url)
-    const fileFirestoreRef = projectFirestore
-      .collection("images")
-      .doc(selectedImg.id)
-    fileStorageRef
-      .delete()
-      .then(() => {
-        fileFirestoreRef.delete()
-        setSelectedImg(null)
+    const thumbStorageRef = projectStorage.refFromURL(selectedImg.thumbUrl)
+    const fileFirestoreRef = projectFirestore.collection("albums").doc(albumId)
+
+    fileFirestoreRef
+      .update({
+        images: firebase.firestore.FieldValue.arrayRemove(selectedImg),
       })
-      .catch((e) => {
-        console.log(e)
+      .then(async () => {
+        console.log("here")
+        await fileStorageRef.delete()
+        await thumbStorageRef.delete()
       })
+      .catch((error) => console.log(error))
+      .finally(setSelectedImg(null))
   }
 
   return (

@@ -1,13 +1,13 @@
 import React from "react"
 import useFireStore from "../hooks/useFirestore"
+import AddFolderButton from "./AddAlbumButton"
 import Albumlist from "./Albumlist"
-import CreateAlbumForm from "./CreateAlbumForm"
 
 function AlbumView() {
   const { docs: albums } = useFireStore("albums")
   return (
     <>
-      <CreateAlbumForm />
+      <AddFolderButton />
       {albums[0] ? <Albumlist albums={albums} /> : <h2>nothing here</h2>}
     </>
   )

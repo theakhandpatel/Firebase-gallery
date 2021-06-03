@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { projectFirestore, projectStorage } from "../firebase/config"
 import firebase from "firebase"
 
-const useStorage = (file, thumbnail, albumId) => {
+const useStorage = (file, thumbnail, albumId, fileId) => {
   const [progress, setProgress] = useState(0)
   const [error, setError] = useState(null)
   const [url, setUrl] = useState(null)
@@ -51,7 +51,7 @@ const useStorage = (file, thumbnail, albumId) => {
     )
   }, [file, albumId, thumbnail])
 
-  return { progress, url, error }
+  return { progress, url, error, fileId }
 }
 
 export default useStorage

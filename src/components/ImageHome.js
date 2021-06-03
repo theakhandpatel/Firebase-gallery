@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react"
-import Footer from "./Footer"
 import ImageGrid from "./ImageGrid"
 import Modal from "./Modal"
 import UploadForm from "./UploadForm"
@@ -19,20 +18,22 @@ function ImageHome() {
         setAlbum(snapshot.data())
       })
   }, [albumId])
-  console.log(album)
   return (
     <div className="album-view">
-      <h2>Album Photos</h2>
+      <h2>{album?.name}</h2>
       <div className="content">
         <UploadForm />
         {album && (
           <ImageGrid images={album.images} setSelectedImg={setSelectedImg} />
         )}
         {selectedImg && (
-          <Modal selectedImg={selectedImg} setSelectedImg={setSelectedImg} />
+          <Modal
+            albumId={albumId}
+            selectedImg={selectedImg}
+            setSelectedImg={setSelectedImg}
+          />
         )}
       </div>
-      <Footer />
     </div>
   )
 }

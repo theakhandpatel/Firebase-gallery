@@ -2,7 +2,7 @@ import { useState } from "react"
 import ProgressBar from "./ProgressBar"
 import imageCompression from "browser-image-compression"
 import { Ring } from "react-css-spinners"
-
+import { FaFileUpload } from "react-icons/fa"
 function UploadForm() {
   const [file, setFile] = useState(null)
   const [error, setError] = useState(null)
@@ -18,6 +18,7 @@ function UploadForm() {
         maxWidthOrHeight: 250,
         useWebWorker: true,
       }
+
       try {
         setOptimizing(true)
         const compressedFile = await imageCompression(selected, options)
@@ -36,8 +37,16 @@ function UploadForm() {
   }
 
   return (
-    <form>
-      <input id="file-input" type="file" onChange={changeHandler} />
+    <>
+      <label className="btn btn-outline-sucess btn-sm m-0 mr-2">
+        <FaFileUpload />
+        <input
+          type="file"
+          onChange={changeHandler}
+          style={{ opacity: 0, position: "absolute", left: "-9999px" }}
+        />
+      </label>
+
       <div className="output">
         {optimizing && (
           <div>
@@ -50,7 +59,7 @@ function UploadForm() {
           <ProgressBar thumbnail={thumbnail} file={file} setFile={setFile} />
         )}
       </div>
-    </form>
+    </>
   )
 }
 
