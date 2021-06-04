@@ -1,12 +1,11 @@
-import { motion } from "framer-motion"
+import React from "react"
 import { projectStorage, projectFirestore } from "../firebase/config"
+import { Button, Modal } from "react-bootstrap"
+import { FaTrash } from "react-icons/fa"
 import firebase from "firebase"
-
-const Modal = ({ selectedImg, setSelectedImg, albumId }) => {
-  const handleModalClick = (e) => {
-    if (e.target.classList.contains("backdrop")) {
-      setSelectedImg(null)
-    }
+const ModalComponent = ({ selectedImg, setSelectedImg, albumId }) => {
+  function closeModal() {
+    setSelectedImg(null)
   }
   const deleteImage = (e) => {
     const fileStorageRef = projectStorage.refFromURL(selectedImg.url)
@@ -27,20 +26,35 @@ const Modal = ({ selectedImg, setSelectedImg, albumId }) => {
   }
 
   return (
-    <motion.div
-      className="backdrop"
-      onClick={handleModalClick}
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-    >
-      <img
-        src={selectedImg.url}
-        initial={{ y: "-100vh" }}
-        animate={{ y: 0 }}
-        alt="enlarged pic"
-      />
-      <span onClick={deleteImage}>Delete</span>
-    </motion.div>
+    <Modal size="sm" show={selectedImg !== null} onHide={closeModal}>
+      <div
+        className="d-flex align-items-center justify-content-center"
+        style={{
+          maxWidth: "fit-content",
+          height: "90vh",
+          backgroundColor: "transparent",
+        }}
+      >
+        <div>
+          <Button
+            onClick={deleteImage}
+            size="sm"
+            variant="outline-danger"
+            style={{ top: "40px", left: "10px", position: "relative" }}
+          >
+            <FaTrash />
+          </Button>
+
+          <img
+            src={selectedImg.url}
+            style={{ height: "95vh", width: "auto" }}
+            // initial={{ y: "-100vh" }}
+            // animate={{ y: 0 }}
+            alt="enlarged pic"
+          />
+        </div>
+      </div>
+    </Modal>
   )
 }
-export default Modal
+export default ModalComponent

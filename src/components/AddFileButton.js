@@ -114,7 +114,7 @@ function AddFileButton({ albumId }) {
   return (
     <>
       <label className="btn btn-outline-sucess btn-lg m-0 mr-2">
-        <FaFileUpload />
+        <FaFileUpload size={24} />
         <input
           type="file"
           onChange={handleUpload}

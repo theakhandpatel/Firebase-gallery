@@ -2,7 +2,8 @@ import { useEffect, useState } from "react"
 import { projectFirestore } from "../firebase/config"
 
 const useFireStore = (collection) => {
-  const [docs, setDocs] = useState([])
+  const [docs, setDocs] = useState(null)
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     const unsub = projectFirestore
@@ -14,11 +15,12 @@ const useFireStore = (collection) => {
           documents.push({ ...doc.data(), id: doc.id })
         })
         setDocs(documents)
+        setLoading(false)
       })
 
     return () => unsub()
   }, [collection])
 
-  return { docs }
+  return { docs, loading }
 }
 export default useFireStore

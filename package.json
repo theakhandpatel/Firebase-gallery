@@ -17,6 +17,8 @@
     "react-icons": "^4.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
+    "react-toggle-dark-mode": "^1.0.4",
+    "reactjs-localstorage": "^1.0.1",
     "web-vitals": "^1.1.1"
   },
   "scripts": {

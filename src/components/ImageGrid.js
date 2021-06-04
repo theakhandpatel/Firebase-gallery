@@ -1,7 +1,7 @@
 import { motion } from "framer-motion"
+import { Image } from "react-bootstrap"
 
 const ImageGrid = ({ setSelectedImg, images }) => {
-  console.log("######################")
   return (
     <div className="img-grid">
       {images &&
@@ -10,17 +10,20 @@ const ImageGrid = ({ setSelectedImg, images }) => {
           .reverse()
           .map((doc, index) => (
             <motion.div
-              className="img-wrap"
+              amimate={{ opacity: 1 }}
+              transition={{ delay: 1 }}
               layout
               whileHover={{ opacity: 1 }}
               key={index}
-              onClick={() => setSelectedImg(doc)}
+              onClick={() => {
+                setSelectedImg(doc)
+              }}
             >
-              <motion.img
-                amimate={{ opacity: 1 }}
-                transition={{ delay: 1 }}
+              <Image
                 src={doc.thumbUrl}
+                style={{ width: "100%", height: "300px" }}
                 alt="uploaded pic"
+                thumbnail
               />
             </motion.div>
           ))}
