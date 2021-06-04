@@ -7,20 +7,22 @@ const ModalComponent = ({ selectedImg, setSelectedImg, albumId }) => {
   function closeModal() {
     setSelectedImg(null)
   }
-  const deleteImage = (e) => {
+
+  const deleteImageFromStorage = async (selectedImg) => {
     const fileStorageRef = projectStorage.refFromURL(selectedImg.url)
     const thumbStorageRef = projectStorage.refFromURL(selectedImg.thumbUrl)
+    await fileStorageRef.delete()
+    await thumbStorageRef.delete()
+  }
+
+  const deleteImage = (e) => {
     const fileFirestoreRef = projectFirestore.collection("albums").doc(albumId)
 
     fileFirestoreRef
       .update({
         images: firebase.firestore.FieldValue.arrayRemove(selectedImg),
       })
-      .then(async () => {
-        console.log("here")
-        await fileStorageRef.delete()
-        await thumbStorageRef.delete()
-      })
+      .then(deleteImageFromStorage(selectedImg))
       .catch((error) => console.log(error))
       .finally(setSelectedImg(null))
   }

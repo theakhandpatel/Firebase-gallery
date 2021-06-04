@@ -23,8 +23,8 @@ function AddFileButton({ albumId }) {
     }
 
     const options = {
-      maxSizeMB: 1,
-      maxWidthOrHeight: 500,
+      maxSizeMB: 0.5,
+      maxWidthOrHeight: 250,
       useWebWorker: true,
     }
 
@@ -113,8 +113,9 @@ function AddFileButton({ albumId }) {
   }
   return (
     <>
-      <label className="btn btn-outline-sucess btn-lg m-0 mr-2">
-        <FaFileUpload size={24} />
+      <label className="btn btn-outline-success btn-sm m-0 mx-2">
+        <FaFileUpload size={20} />
+        <span className="ms-1">Upload</span>
         <input
           type="file"
           onChange={handleUpload}

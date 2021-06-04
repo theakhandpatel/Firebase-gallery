@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import { reactLocalStorage } from "reactjs-localstorage"
 
 const ThemeContext = React.createContext()
@@ -22,16 +22,18 @@ const dark = {
   outline: "outline-primary",
 }
 
-const savedTheme = reactLocalStorage.get("darkMode", false) ? dark : light
-
+const savedTheme = reactLocalStorage.get("theme", light)
 export function ThemeProvider({ children }) {
   const [theme, setTheme] = useState(savedTheme)
 
   const toggleTheme = () => {
-    theme === light ? setTheme(dark) : setTheme(light)
-
-    reactLocalStorage.set("darkMode", theme === dark)
+    let isDark = theme !== light
+    isDark ? setTheme(light) : setTheme(dark)
   }
+
+  useEffect(() => {
+    reactLocalStorage.set("theme", theme)
+  }, [theme])
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
       {children}
