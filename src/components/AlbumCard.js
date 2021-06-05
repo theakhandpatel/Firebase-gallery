@@ -18,9 +18,9 @@ function AlbumCard({ album }) {
       <Col>
         <Card
           className=""
-          bg={theme.bg}
-          text={theme.bg === "light" ? "dark" : "white"}
-          border={theme.bg !== "light" ? "dark" : "white"}
+          bg={theme?.bg}
+          text={theme?.bg === "light" ? "dark" : "white"}
+          border={theme?.bg !== "light" ? "dark" : "white"}
         >
           <Card.Img
             variant="top"

@@ -22,9 +22,9 @@ const dark = {
   outline: "outline-primary",
 }
 
-const savedTheme = reactLocalStorage.get("theme", light)
+const savedTheme = reactLocalStorage.getObject("theme", light)
 export function ThemeProvider({ children }) {
-  const [theme, setTheme] = useState(savedTheme)
+  const [theme, setTheme] = useState(savedTheme || light)
 
   const toggleTheme = () => {
     let isDark = theme !== light
@@ -32,7 +32,7 @@ export function ThemeProvider({ children }) {
   }
 
   useEffect(() => {
-    reactLocalStorage.set("theme", theme)
+    reactLocalStorage.setObject("theme", theme)
   }, [theme])
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>

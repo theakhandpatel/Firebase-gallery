@@ -1,3 +1,9 @@
 .App {
   min-height: 100vh;
 }
+
+.download-btn svg {
+  fill: #ffffff;
+  font-weight: bolder;
+  stroke-width: 2rem;
+}

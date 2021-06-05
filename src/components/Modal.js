@@ -3,6 +3,7 @@ import { projectStorage, projectFirestore } from "../firebase/config"
 import { Button, Modal } from "react-bootstrap"
 import { FaTrash } from "react-icons/fa"
 import firebase from "firebase"
+import { ImageDownloader } from "@samvera/image-downloader"
 const ModalComponent = ({ selectedImg, setSelectedImg, albumId }) => {
   function closeModal() {
     setSelectedImg(null)
@@ -38,20 +39,20 @@ const ModalComponent = ({ selectedImg, setSelectedImg, albumId }) => {
         }}
       >
         <div>
-          <Button
-            onClick={deleteImage}
-            size="sm"
-            variant="outline-danger"
-            style={{ top: "40px", left: "10px", position: "relative" }}
-          >
-            <FaTrash />
-          </Button>
+          <div style={{ top: "40px", left: "10px", position: "relative" }}>
+            <Button onClick={deleteImage} size="sm" variant="outline-danger">
+              <FaTrash />
+            </Button>
+            <ImageDownloader
+              imageUrl={selectedImg.url}
+              imageTitle={selectedImg.name}
+              className="btn btn-sm btn-primary ms-2 download-btn"
+            ></ImageDownloader>
+          </div>
 
           <img
             src={selectedImg.url}
             style={{ height: "95vh", width: "auto" }}
-            // initial={{ y: "-100vh" }}
-            // animate={{ y: 0 }}
             alt="enlarged pic"
           />
         </div>

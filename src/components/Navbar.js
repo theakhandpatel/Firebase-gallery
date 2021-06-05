@@ -7,7 +7,7 @@ import { TiWeatherNight } from "react-icons/ti"
 
 function NavBarComponent() {
   const { theme, toggleTheme } = useTheme()
-  const [darkMode, setDarkMode] = useState(theme.variant === "dark")
+  const [darkMode, setDarkMode] = useState(theme?.variant === "dark")
 
   const toggleDarkMode = (checked) => {
     toggleTheme()
@@ -15,12 +15,12 @@ function NavBarComponent() {
   }
 
   return (
-    <Navbar variant={theme.variant} bg={theme.bg} expand="sm">
+    <Navbar variant={theme?.variant} bg={theme?.bg} expand="sm">
       <Container>
         <Navbar.Brand as={Link} to="/">
           <h2 className="text-large">Firegram</h2>
         </Navbar.Brand>
-        <Button size="sm" variant={theme.outline} onClick={toggleDarkMode}>
+        <Button size="sm" variant={theme?.outline} onClick={toggleDarkMode}>
           {darkMode ? (
             <TiWeatherNight color="#48bfe3" size="30" />
           ) : (

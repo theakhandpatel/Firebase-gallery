@@ -10,9 +10,9 @@ import { Container } from "react-bootstrap"
 function App() {
   const { theme } = useTheme()
   return (
-    <div className={"App " + theme.bg_color}>
+    <div className={"App " + theme?.bg_color}>
       <Navbar />
-      <Container className={"text-center " + theme.text_color}>
+      <Container className={"text-center " + theme?.text_color}>
         <Switch>
           <Route exact path="/" component={AlbumView} />
           <Route path="/:albumId" component={ImageHome} />
