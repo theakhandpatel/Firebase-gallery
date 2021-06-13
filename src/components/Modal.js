@@ -1,9 +1,10 @@
 import React from "react"
 import { projectStorage, projectFirestore } from "../firebase/config"
-import { Button, Modal } from "react-bootstrap"
+import { Button, Modal,Image, Container } from "react-bootstrap"
 import { FaTrash } from "react-icons/fa"
 import firebase from "firebase"
 import { ImageDownloader } from "@samvera/image-downloader"
+// import Image from 'react-bootstrap/Image'
 const ModalComponent = ({ selectedImg, setSelectedImg, albumId }) => {
   function closeModal() {
     setSelectedImg(null)
@@ -29,16 +30,11 @@ const ModalComponent = ({ selectedImg, setSelectedImg, albumId }) => {
   }
 
   return (
-    <Modal size="sm" show={selectedImg !== null} onHide={closeModal}>
-      <div
-        className="d-flex align-items-center justify-content-center"
-        style={{
-          maxWidth: "fit-content",
-          height: "90vh",
-          backgroundColor: "transparent",
-        }}
-      >
-        <div>
+    <Modal centered size="lg" fullscreen="sm-down" show={selectedImg !== null} onHide={closeModal}>
+      <Modal.Header closeButton>
+    <Modal.Title>Modal title</Modal.Title>
+  </Modal.Header>
+        <Container>
           <div style={{ top: "40px", left: "10px", position: "relative" }}>
             <Button onClick={deleteImage} size="sm" variant="outline-danger">
               <FaTrash />
@@ -50,13 +46,13 @@ const ModalComponent = ({ selectedImg, setSelectedImg, albumId }) => {
             ></ImageDownloader>
           </div>
 
-          <img
+          <Image fluid
             src={selectedImg.url}
             style={{ height: "95vh", width: "auto" }}
             alt="enlarged pic"
           />
-        </div>
-      </div>
+        </Container>
+      
     </Modal>
   )
 }
