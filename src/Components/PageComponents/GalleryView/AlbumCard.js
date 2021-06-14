@@ -1,7 +1,7 @@
 import React from "react"
 import { Card, Col } from "react-bootstrap"
 import { Link } from "react-router-dom"
-import { useTheme } from "../../Context/ThemeContext"
+import { useTheme } from "../../../Context/ThemeContext"
 
 function AlbumCard({ album }) {
   const { theme } = useTheme()

@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { Button, Form, Modal } from "react-bootstrap"
 import { CgRename } from "react-icons/cg"
-import { projectFirestore } from "../../firebase/config"
+import { projectFirestore } from "../../../firebase/config"
 
 export default function RenameAlbumButton({ album }) {
   const [open, setOpen] = useState(false)

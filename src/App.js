@@ -1,6 +1,6 @@
 import "./App.css"
-import AlbumView from "./Components/PageComponents/AlbumView"
-import ImageHome from "./Components/PageComponents/ImageHome"
+import GalleryPage from "./Components/PageComponents/GalleryView/GalleryPage"
+import AlbumPage from "./Components/PageComponents/AlbumView/AlbumPage"
 import Navbar from "./Components/PageComponents/Navbar.js"
 import { Route, Switch } from "react-router-dom"
 import { useTheme } from "./Context/ThemeContext"
@@ -21,8 +21,8 @@ function App() {
         <Switch>
           
           <Route exact path="/" component={HomePage} />
-          <PrivateRoute exact path="/albums" component={AlbumView} />
-          <PrivateRoute exact path="/albums/:albumId" component={ImageHome} />
+          <PrivateRoute exact path="/albums" component={GalleryPage} />
+          <PrivateRoute exact path="/albums/:albumId" component={AlbumPage} />
 
           {/* Auth Routes */}
           <Route exact path="/forgot-password" component={ForgotPassword} />

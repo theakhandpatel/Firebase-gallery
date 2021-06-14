@@ -1,8 +1,8 @@
 import React, { useState } from "react"
 import { Button, Form, Modal } from "react-bootstrap"
 import { FaFolderPlus } from "react-icons/fa"
-import { useAuth } from "../../Context/AuthContext"
-import { projectFirestore } from "../../firebase/config"
+import { useAuth } from "../../../Context/AuthContext"
+import { projectFirestore } from "../../../firebase/config"
 
 export default function AddFolderButton() {
   const [open, setOpen] = useState(false)

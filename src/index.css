@@ -13,3 +13,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+*{
+  transition-property: background-color ,color ;
+  transition-duration: 0.4s;
+  transition-timing-function: ease-in-out;
+}

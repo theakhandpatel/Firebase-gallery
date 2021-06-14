@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react"
 import ImageGrid from "./ImageGrid"
 import Modal from "./Modal"
 import { Link, useParams } from "react-router-dom"
-import { projectFirestore } from "../../firebase/config"
+import { projectFirestore } from "../../../firebase/config"
 import AddFileButton from "./AddFileButton"
 import { FaArrowAltCircleLeft } from "react-icons/fa"
 
@@ -10,7 +10,7 @@ import RenameAlbumButton from "./RenameAlbumButton"
 import DeleteAlbumButton from "./DeleteAlbumButton"
 import { Roller } from "react-css-spinners"
 
-function ImageHome() {
+function AlbumPage() {
   const [selectedImg, setSelectedImg] = useState(null)
   const { albumId } = useParams()
   const [album, setAlbum] = useState(null)
@@ -60,4 +60,4 @@ function ImageHome() {
   )
 }
 
-export default ImageHome
+export default AlbumPage
