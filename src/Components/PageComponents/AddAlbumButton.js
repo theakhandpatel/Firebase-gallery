@@ -1,11 +1,13 @@
 import React, { useState } from "react"
 import { Button, Form, Modal } from "react-bootstrap"
-import { CgRename } from "react-icons/cg"
-import { projectFirestore } from "../firebase/config"
+import { FaFolderPlus } from "react-icons/fa"
+import { useAuth } from "../../Context/AuthContext"
+import { projectFirestore } from "../../firebase/config"
 
-export default function RenameAlbumButton({ album }) {
+export default function AddFolderButton() {
   const [open, setOpen] = useState(false)
-  const [albumInput, setAlbumInput] = useState(album?.name)
+  const [albumInput, setAlbumInput] = useState("")
+  const {currentUser}  = useAuth()
 
   function openModal() {
     setOpen(true)
@@ -19,8 +21,7 @@ export default function RenameAlbumButton({ album }) {
     e.preventDefault()
     projectFirestore
       .collection("albums")
-      .doc(album.id)
-      .update({ name: albumInput })
+      .add({ name: albumInput,createdBy: currentUser.uid})
       .catch((err) => {
         console.log(err)
       })
@@ -31,13 +32,14 @@ export default function RenameAlbumButton({ album }) {
   return (
     <>
       <Button
-        className="mx-2"
+        className="m-3 mb-5  "
         onClick={openModal}
-        variant="outline-warning"
+        variant="danger"
         size="sm"
+        style={{ cursor: "pointer" }}
       >
-        <CgRename color="#457b9d" size={24} />
-        <span className="ms-2">Rename</span>
+        <FaFolderPlus color="#372772" size={24} />
+        <span className="ms-2">Create Album</span>
       </Button>
       {/* </div>
       </div> */}
@@ -45,7 +47,7 @@ export default function RenameAlbumButton({ album }) {
         <Form onSubmit={handleSubmit}>
           <Modal.Body>
             <Form.Group>
-              <Form.Label>Update Album Name</Form.Label>
+              <Form.Label>Folder Name</Form.Label>
               <Form.Control
                 required
                 type="text"
@@ -59,7 +61,7 @@ export default function RenameAlbumButton({ album }) {
               Cancel
             </Button>
             <Button variant="success" type="submit">
-              Update
+              Create
             </Button>
           </Modal.Footer>
         </Form>

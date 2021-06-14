@@ -7,14 +7,14 @@ export function useTheme() {
   return useContext(ThemeContext)
 }
 
-const light = {
+const LIGHT_THEME = {
   variant: "light",
   bg: "light",
   bg_color: "",
   text_color: "",
   outline: "outline-dark",
 }
-const dark = {
+const DARK_THEME = {
   variant: "dark",
   bg: "dark",
   bg_color: "bg-dark",
@@ -22,18 +22,32 @@ const dark = {
   outline: "outline-primary",
 }
 
-const savedTheme = reactLocalStorage.getObject("theme", light)
 export function ThemeProvider({ children }) {
-  const [theme, setTheme] = useState(savedTheme || light)
+  const [theme, setTheme] = useState(LIGHT_THEME)
 
   const toggleTheme = () => {
-    let isDark = theme !== light
-    isDark ? setTheme(light) : setTheme(dark)
+    console.log("in toogle  ", theme)
+    let isLight = theme.variant === "light"
+    console.log("islight: ",isLight)
+    if(isLight){ 
+      console.log("inside if 1st")
+      setTheme(DARK_THEME)
+    reactLocalStorage.setObject("theme",DARK_THEME)
+  }else{
+    console.log("inside else")
+    setTheme(LIGHT_THEME);
+    reactLocalStorage.setObject("theme",LIGHT_THEME)
+  }
   }
 
-  useEffect(() => {
-    reactLocalStorage.setObject("theme", theme)
-  }, [theme])
+  useEffect(()=>{
+    console.log("supposed to run once")
+    setTheme(reactLocalStorage.getObject("theme", LIGHT_THEME))
+  },[])
+
+  // useEffect(() => {
+  //   reactLocalStorage.setObject("theme", theme)
+  // }, [theme])
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
       {children}

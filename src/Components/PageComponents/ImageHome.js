@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react"
 import ImageGrid from "./ImageGrid"
 import Modal from "./Modal"
 import { Link, useParams } from "react-router-dom"
-import { projectFirestore } from "../firebase/config"
+import { projectFirestore } from "../../firebase/config"
 import AddFileButton from "./AddFileButton"
 import { FaArrowAltCircleLeft } from "react-icons/fa"
 
@@ -36,7 +36,7 @@ function ImageHome() {
             {album?.name}
           </h2>
 
-          <Link to="/">
+          <Link to="/albums">
             <FaArrowAltCircleLeft size={28} />
           </Link>
           <AddFileButton albumId={albumId} />

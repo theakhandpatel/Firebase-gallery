@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import { Button, Form, Modal } from "react-bootstrap"
 import { FaTrash } from "react-icons/fa"
 import { useHistory } from "react-router-dom"
-import { projectFirestore, projectStorage } from "../firebase/config"
+import { projectFirestore, projectStorage } from "../../firebase/config"
 
 export default function DeleteAlbumButton({ album }) {
   const [open, setOpen] = useState(false)

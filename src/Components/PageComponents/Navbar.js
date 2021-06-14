@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { Navbar, Container, Button } from "react-bootstrap"
 import { Link } from "react-router-dom"
-import { useTheme } from "../Context/ThemeContext"
+import { useTheme } from "../../Context/ThemeContext"
 import { IoMdSunny } from "react-icons/io"
 import { TiWeatherNight } from "react-icons/ti"
 

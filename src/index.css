@@ -1,12 +1,3 @@
-.light-theme {
-  --primary: #03045e;
-  --background: #f1faee;
-}
-
-.dark-theme {
-  --primary: #3282b8;
-  --background: #151515;
-}
 
 body {
   margin: 0;
@@ -16,7 +7,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--background);
-  color: var(--primary);
 }
 
 code {

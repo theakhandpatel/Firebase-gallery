@@ -1,11 +1,11 @@
 import React from "react"
 import { Roller } from "react-css-spinners"
-import useFireStore from "../hooks/useFirestore"
+import useFireStore from "../../hooks/useFirestore"
 import AddAlbumButton from "./AddAlbumButton"
 import Albumlist from "./Albumlist"
 
 function AlbumView() {
-  const { docs: albums, loading } = useFireStore("albums")
+  const { docs: albums, loading } = useFireStore("albums",)
 
   return (
     <>

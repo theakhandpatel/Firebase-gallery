@@ -6,12 +6,15 @@ import reportWebVitals from "./reportWebVitals"
 import { BrowserRouter } from "react-router-dom"
 import "bootstrap/dist/css/bootstrap.min.css"
 import { ThemeProvider } from "./Context/ThemeContext"
+import {AuthProvider} from "./Context/AuthContext"
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <ThemeProvider>
+        <AuthProvider>
         <App />
+        </AuthProvider>
       </ThemeProvider>
     </BrowserRouter>
   </React.StrictMode>,

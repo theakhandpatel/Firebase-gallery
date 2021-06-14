@@ -1,11 +1,11 @@
 import React, { useState } from "react"
 import { Button, Form, Modal } from "react-bootstrap"
-import { FaFolderPlus } from "react-icons/fa"
-import { projectFirestore } from "../firebase/config"
+import { CgRename } from "react-icons/cg"
+import { projectFirestore } from "../../firebase/config"
 
-export default function AddFolderButton() {
+export default function RenameAlbumButton({ album }) {
   const [open, setOpen] = useState(false)
-  const [albumInput, setAlbumInput] = useState("")
+  const [albumInput, setAlbumInput] = useState(album?.name)
 
   function openModal() {
     setOpen(true)
@@ -19,7 +19,8 @@ export default function AddFolderButton() {
     e.preventDefault()
     projectFirestore
       .collection("albums")
-      .add({ name: albumInput })
+      .doc(album.id)
+      .update({ name: albumInput })
       .catch((err) => {
         console.log(err)
       })
@@ -30,14 +31,13 @@ export default function AddFolderButton() {
   return (
     <>
       <Button
-        className="m-3 mb-5  "
+        className="mx-2"
         onClick={openModal}
-        variant="danger"
+        variant="outline-warning"
         size="sm"
-        style={{ cursor: "pointer" }}
       >
-        <FaFolderPlus color="#372772" size={24} />
-        <span className="ms-2">Create Album</span>
+        <CgRename color="#457b9d" size={24} />
+        <span className="ms-2">Rename</span>
       </Button>
       {/* </div>
       </div> */}
@@ -45,7 +45,7 @@ export default function AddFolderButton() {
         <Form onSubmit={handleSubmit}>
           <Modal.Body>
             <Form.Group>
-              <Form.Label>Folder Name</Form.Label>
+              <Form.Label>Update Album Name</Form.Label>
               <Form.Control
                 required
                 type="text"
@@ -59,7 +59,7 @@ export default function AddFolderButton() {
               Cancel
             </Button>
             <Button variant="success" type="submit">
-              Create
+              Update
             </Button>
           </Modal.Footer>
         </Form>

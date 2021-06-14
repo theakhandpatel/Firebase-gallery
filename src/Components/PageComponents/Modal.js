@@ -1,5 +1,5 @@
 import React from "react"
-import { projectStorage, projectFirestore } from "../firebase/config"
+import { projectStorage, projectFirestore } from "../../firebase/config"
 import { Button, Modal,Image, Container } from "react-bootstrap"
 import { FaTrash } from "react-icons/fa"
 import firebase from "firebase"

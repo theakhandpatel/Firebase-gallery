@@ -1,7 +1,7 @@
 import React from "react"
 import { Card, Col } from "react-bootstrap"
 import { Link } from "react-router-dom"
-import { useTheme } from "../Context/ThemeContext"
+import { useTheme } from "../../Context/ThemeContext"
 
 function AlbumCard({ album }) {
   const { theme } = useTheme()
@@ -14,7 +14,7 @@ function AlbumCard({ album }) {
     imageSource = album.images[0].thumbUrl
   }
   return (
-    <Link to={`/${album.id}`}>
+    <Link to={`albums/${album.id}`}>
       <Col>
         <Card
           className=""
