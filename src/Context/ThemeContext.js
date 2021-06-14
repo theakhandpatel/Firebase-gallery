@@ -10,7 +10,7 @@ export function useTheme() {
 const LIGHT_THEME = {
   variant: "light",
   bg: "light",
-  bg_color: "",
+  bg_color: "bg-white",
   text_color: "",
   outline: "outline-dark",
 }
@@ -45,9 +45,7 @@ export function ThemeProvider({ children }) {
     setTheme(reactLocalStorage.getObject("theme", LIGHT_THEME))
   },[])
 
-  // useEffect(() => {
-  //   reactLocalStorage.setObject("theme", theme)
-  // }, [theme])
+
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
       {children}

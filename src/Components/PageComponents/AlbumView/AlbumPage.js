@@ -14,6 +14,7 @@ function AlbumPage() {
   const [selectedImg, setSelectedImg] = useState(null)
   const { albumId } = useParams()
   const [album, setAlbum] = useState(null)
+  const [error,setError] = useState(null)
 
   useEffect(() => {
     return projectFirestore
@@ -21,10 +22,11 @@ function AlbumPage() {
       .doc(albumId)
       .onSnapshot((snapshot) => {
         setAlbum({ ...snapshot.data(), id: snapshot.id })
-      })
+      },(err)=>{setError(err.message)})
   }, [albumId])
   return (
     <>
+      {error ? <div>{error}</div>: null }
       {!album ? (
         <>
           <p className="display-5">Loading</p>

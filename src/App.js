@@ -9,6 +9,7 @@ import PrivateRoute from "./Components/AuthComponents/PrivateRoute"
 import ForgotPassword from "./Components/AuthComponents/ForgotPassword"
 import SignUp from "./Components/AuthComponents/SignUp"
 import Login from "./Components/AuthComponents/Login"
+import Profile from "./Components/AuthComponents/Profile"
 import HomePage from "./Components/PageComponents/HomePage"
 
 
@@ -23,8 +24,9 @@ function App() {
           <Route exact path="/" component={HomePage} />
           <PrivateRoute exact path="/albums" component={GalleryPage} />
           <PrivateRoute exact path="/albums/:albumId" component={AlbumPage} />
-
+          
           {/* Auth Routes */}
+          <PrivateRoute exact path="/profile" component={Profile} />
           <Route exact path="/forgot-password" component={ForgotPassword} />
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/login" component={Login} />

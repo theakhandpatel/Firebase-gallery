@@ -3,6 +3,7 @@ import { Form, Button, Card, Alert } from "react-bootstrap"
 import { useAuth } from "../../Context/AuthContext"
 import { Link } from "react-router-dom"
 import CenteredContainer from "./CenteredContainer"
+import { useTheme } from "../../Context/ThemeContext"
 
 export default function ForgotPassword() {
   const emailRef = useRef()
@@ -10,7 +11,7 @@ export default function ForgotPassword() {
   const [error, setError] = useState("")
   const [message, setMessage] = useState("")
   const [loading, setLoading] = useState(false)
-
+  const {theme} = useTheme()
   async function handleSubmit(e) {
     e.preventDefault()
 
@@ -29,7 +30,7 @@ export default function ForgotPassword() {
 
   return (
     <CenteredContainer>
-      <Card>
+      <Card border="primary" bg={theme.variant==="light" ?"light" :"dark"} text>
         <Card.Body>
           <h2 className="text-center mb-4">Password Reset</h2>
           {error && <Alert variant="danger">{error}</Alert>}
@@ -39,7 +40,7 @@ export default function ForgotPassword() {
               <Form.Label>Email</Form.Label>
               <Form.Control type="email" ref={emailRef} required />
             </Form.Group>
-            <Button disabled={loading} className="w-100" type="submit">
+            <Button disabled={loading} className="w-100 mt-3" type="submit">
               Reset Password
             </Button>
           </Form>

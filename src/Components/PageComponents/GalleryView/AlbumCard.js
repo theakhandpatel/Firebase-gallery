@@ -14,18 +14,17 @@ function AlbumCard({ album }) {
     imageSource = album.images[0].thumbUrl
   }
   return (
-    <Link to={`albums/${album.id}`}>
+    <Link style={{ color: 'inherit', textDecoration: 'inherit'}} to={`/albums/${album.id}`}>
       <Col>
         <Card
-          className=""
-          bg={theme?.bg}
+          className={theme.bg ==="light"? "bg-white" : "bg-secondary"}
           text={theme?.bg === "light" ? "dark" : "white"}
           border={theme?.bg !== "light" ? "dark" : "white"}
         >
           <Card.Img
             variant="top"
             className=""
-            style={{ width: "100%", height: "8rem" }}
+            style={{ width: "auto", height: "7rem" }}
             src={imageSource}
           />
           <Card.Body>

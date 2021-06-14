@@ -8,11 +8,12 @@ const useFireStore = (collection) => {
   const {currentUser} = useAuth()
 
   useEffect(() => {
-    const unsub = projectFirestore
+    return projectFirestore
       .collection(collection)
       .where("createdBy", "==", currentUser.uid)
       // .orderBy("createdAt", "desc")
       .onSnapshot((snap) => {
+        console.log(snap)
         let documents = []
         snap.forEach((doc) => {
           documents.push({ ...doc.data(), id: doc.id })
@@ -20,8 +21,6 @@ const useFireStore = (collection) => {
         setDocs(documents)
         setLoading(false)
       })
-
-    return () => unsub()
   }, [collection,currentUser])
 
   return { docs, loading }

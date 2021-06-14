@@ -16,6 +16,6 @@ code {
 
 *{
   transition-property: background-color ,color ;
-  transition-duration: 0.4s;
+  transition-duration: 0.2s;
   transition-timing-function: ease-in-out;
 }

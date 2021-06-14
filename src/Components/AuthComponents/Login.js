@@ -3,6 +3,7 @@ import { Form, Button, Alert, Card } from "react-bootstrap"
 import { useAuth } from "../../Context/AuthContext"
 import { Link, useHistory } from "react-router-dom"
 import CenteredContainer from "./CenteredContainer"
+import { useTheme } from "../../Context/ThemeContext"
 
 function Login() {
   const emailRef = useRef()
@@ -11,6 +12,7 @@ function Login() {
   const [loading, setLoading] = useState(false)
   const { login } = useAuth()
   const history = useHistory()
+  const {theme} = useTheme()
 
   async function loginHandler(e) {
     e.preventDefault()
@@ -31,7 +33,7 @@ function Login() {
   return (
     <>
       <CenteredContainer>
-        <Card>
+        <Card border="primary" bg={theme.variant==="light" ?"light" :"dark"} text >
           <Card.Body>
             <h2 className="text-center mb-4">Login</h2>
             {error && <Alert variant="danger">{error}</Alert>}
@@ -44,7 +46,7 @@ function Login() {
                 <Form.Label>Password</Form.Label>
                 <Form.Control type="password" ref={passwordRef} required />
               </Form.Group>
-              <Button disabled={loading} className="w-100" type="submit">
+              <Button  disabled={loading} className="w-100 mt-3" type="submit">
                 Login
               </Button>
             </Form>

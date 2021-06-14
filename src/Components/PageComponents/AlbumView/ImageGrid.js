@@ -21,8 +21,9 @@ const ImageGrid = ({ setSelectedImg, images }) => {
               }}
             >
               <Image
+              fluid
                 src={doc.thumbUrl}
-                style={{ width: "100%", height: "300px" }}
+                style={{ width: "100%", height: "auto" }}
                 alt="uploaded pic"
                 thumbnail
               />

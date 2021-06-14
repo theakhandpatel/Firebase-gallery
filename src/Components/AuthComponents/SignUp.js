@@ -3,6 +3,7 @@ import { Form, Button, Alert, Card } from "react-bootstrap"
 import { useAuth } from "../../Context/AuthContext"
 import { Link, useHistory } from "react-router-dom"
 import CenteredContainer from "./CenteredContainer"
+import { useTheme } from "../../Context/ThemeContext"
 
 function SignUp() {
   const emailRef = useRef()
@@ -12,6 +13,7 @@ function SignUp() {
   const [loading, setLoading] = useState(false)
   const { signup } = useAuth()
   const history = useHistory()
+  const {theme} = useTheme()
 
   const signUpHandler = async (e) => {
     e.preventDefault()
@@ -34,7 +36,7 @@ function SignUp() {
   return (
     <>
       <CenteredContainer>
-        <Card>
+        <Card border="primary" bg={theme.variant==="light" ?"light" :"dark"} text>
           <Card.Body>
             <h2 className="text-center mb-4">Sign Up</h2>
             {error && <Alert variant="danger">{error}</Alert>}
@@ -55,7 +57,7 @@ function SignUp() {
                   required
                 />
               </Form.Group>
-              <Button disabled={loading} className="w-100" type="submit">
+              <Button disabled={loading} className="w-100 mt-4" type="submit">
                 Sign Up
               </Button>
             </Form>

@@ -6,7 +6,7 @@ import { Row } from "react-bootstrap"
 import AlbumCard from "./AlbumCard"
 
 function AlbumView() {
-  const { docs: albums, loading } = useFireStore("albums",)
+  const { docs: albums, loading } = useFireStore("albums")
 
   return (
     <>
@@ -17,9 +17,9 @@ function AlbumView() {
           <p className="display-5">Loading</p>
           <Roller size={100} color="#5E239D" />
         </>
-      ) : albums ? (
+      ) : albums[0] ? (
         <Row xs={2} md={4} lg={6} className="g-5">
-      {albums &&
+      {albums[0] &&
         albums.map((album, index) => {
           return <AlbumCard key={index} album={album} />
         })}
