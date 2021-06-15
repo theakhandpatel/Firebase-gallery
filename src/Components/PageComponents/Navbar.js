@@ -36,7 +36,7 @@ function NavBarComponent() {
           <h2 className="text-large">Firegram</h2>
         </Navbar.Brand>
         {currentUser && <Dropdown as={ButtonGroup}>
-  <Button  href="/profile"  variant="primary"><FaUserAstronaut/></Button>
+  <Button as={Link}  to="/profile"  variant="primary"><FaUserAstronaut/></Button>
 
   <Dropdown.Toggle split variant="primary" id="dropdown-split-basic" />
 
