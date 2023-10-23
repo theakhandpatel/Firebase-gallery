@@ -1,6 +1,108 @@
-# Getting Started with Create React App
+# Firegram 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Firegram is a web application built with React and Firebase that allows users to store and manage their images in the cloud. With Firegram, users can upload images, organize them into nested folders, and access their files from anywhere with an internet connection. This readme will guide you through the setup and usage of the Firegram application.
+
+Live Demo :   https://firegram-akhand.netlify.app/
+
+
+<div align="center">
+<img src="./images/homepage.jpeg"  width="600" height="300">
+<br>
+<br>
+<img src="./images/gallery-view.jpeg"  width="600" height="300">
+</div>
+
+## Table of Contents
+
+- [Features](#features)
+- [Prerequisites](#prerequisites)
+- [Getting Started](#getting-started)
+  - [Installation](#installation)
+  - [Configuration](#configuration)
+- [Usage](#usage)
+  - [User Registration](#user-registration)
+  - [Uploading Images](#uploading-images)
+  - [Managing Folders](#managing-folders)
+- [Contributing](#contributing)
+- [License](#license)
+
+## Features
+
+Firegram comes with the following features:
+
+- **User Registration**: Users can create an account and sign in to access their image storage.
+- **Image Upload**: Upload images to the cloud with ease.
+- **Folder Management**: Create and organize folders for better file management.
+- **Nested Folders**: Create nested folders to create a structured storage system.
+- **Image Preview**: Preview uploaded images.
+- **Security**: Built on Firebase, Firegram provides secure authentication and data storage.
+
+## Prerequisites
+
+Before you start using Firegram, you should have the following prerequisites:
+
+- [Node.js](https://nodejs.org/) installed on your system.
+- A Firebase project for authentication and cloud storage. You can create one [here](https://console.firebase.google.com/).
+
+## Getting Started
+
+### Installation
+
+1. Clone the Firegram repository to your local machine:
+
+   ```bash
+   git clone https://github.com/theakhandpatel/Firebase-gallery.git
+   ```
+
+2. Change to the Firegram directory:
+
+   ```bash
+   cd Firebase-gallery
+   ```
+
+3. Install the project dependencies:
+
+   ```bash
+   npm install
+   ```
+
+### Configuration
+
+To configure Firebase for the Firegram project, follow these steps:
+
+1. Go to the Firebase Console (https://console.firebase.google.com/).
+
+2. Create a new Firebase project if you haven't already.
+
+3. In your Firebase project, navigate to Project Settings by clicking on the gear icon.
+
+4. Scroll down to the "Your apps" section and click on the web app icon (</>).
+
+5. Give your app a name and click "Register App." Firebase will provide you with a configuration object. Copy this configuration object.
+
+6. In your Firegram project directory, create a file named `.env.local` and set your Firebase configuration as environment variables like this:
+
+   ```env
+   REACT_APP_FIREBASE_API_KEY=YOUR_API_KEY
+   REACT_APP_FIREBASE_AUTH_DOMAIN=YOUR_AUTH_DOMAIN
+   REACT_APP_FIREBASE_PROJECT_ID=YOUR_PROJECT_ID
+   REACT_APP_FIREBASE_STORAGE_BUCKET=YOUR_STORAGE_BUCKET
+   REACT_APP_FIREBASE_MESSAGING_SENDER_ID=YOUR_MESSAGING_SENDER_ID
+   REACT_APP_FIREBASE_APP_ID=YOUR_APP_ID
+   ```
+
+7. Save the `.env.local` file.
+
+## Contributing
+
+If you would like to contribute to Firegram, feel free to fork the repository, make your changes, and submit a pull request. We welcome contributions from the community.
+
+## License
+
+This project is licensed under the [MIT License](LICENSE). Feel free to use and modify the code as needed.
+
+Thank you for choosing Firegram as your online image storage service. If you encounter any issues or have questions, please don't hesitate to [contact us](mailto:contact@firegram.com).
+
 
 ## Available Scripts
 
@@ -23,48 +125,3 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 
 Builds the app for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
